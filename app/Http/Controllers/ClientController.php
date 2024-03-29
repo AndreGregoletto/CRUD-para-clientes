@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::whereActive(1)->get(['id', 'name', 'cpf', 'date_of_birth']);
+        $clients = Client::get(['id', 'name', 'cpf', 'date_of_birth']);
 
         $clients->transform(function ($client) {
             $client->cpf = substr($client->cpf, 0, 3) . '.' . substr($client->cpf, 3, 3) . '.' . substr($client->cpf, 6, 3) . '-' . substr($client->cpf, 9, 2);
